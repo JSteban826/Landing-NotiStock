@@ -891,11 +891,20 @@
         setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 1500);
         return;
       }
-      saveEmail(email);
-      document.getElementById('emailInput').value = '';
-      document.getElementById('successMsg').style.display = 'block';
-      count++;
-      document.getElementById('counter').textContent = count + ' personas';
+      async function saveEmail(email) {
+  await fetch('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': 'TU_API_KEY_AQUI'
+    },
+    body: JSON.stringify({
+      email: email,
+      listIds: [TU_ID_DE_LISTA], // número que te da Brevo
+      updateEnabled: true
+    })
+  });
+}
     }
 
     function handleSubmit2() {
@@ -919,11 +928,20 @@
     // ── Guardar email (Tally / backend propio) ──
     // Por ahora solo lo registra en consola.
     // Reemplaza esto con tu integración de Tally, Brevo, o tu API:
-    function saveEmail(email) {
-      console.log('Nuevo lead:', email);
-      // Ejemplo con Tally embed o fetch a tu endpoint:
-      // fetch('https://api.brevo.com/v3/contacts', { method:'POST', ... })
-    }
+    async function saveEmail(email) {
+  await fetch('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': 'API_KEY_DE_BREVO_AQUI'
+    },
+    body: JSON.stringify({
+      email: email,
+      listIds: [TU_ID_DE_LISTA], // número que te da Brevo
+      updateEnabled: true
+    })
+  });
+}
 
     // ── Enter key ──
     document.getElementById('emailInput').addEventListener('keydown', e => { if (e.key === 'Enter') handleSubmit(); });
