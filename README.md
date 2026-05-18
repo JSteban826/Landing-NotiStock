@@ -1,2 +1,2 @@
 Landing Page preliminar sobre el proyecto "NotiStock"
-Link: landing-noti-stock.vercel.app
+Link: noti-stock-page.vercel.app
