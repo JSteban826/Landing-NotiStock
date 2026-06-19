@@ -65,7 +65,7 @@ export default function Home() {
   return (
     <>
       {/* NAV */}
-      <nav>
+     <nav className="landing-nav">
         <div className="logo">Noti<span>Stock</span></div>
         <button className="nav-cta" onClick={scrollToForm}>Quiero acceso</button>
       </nav>
