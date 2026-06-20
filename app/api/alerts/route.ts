@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const { productName, currentStock, minStock, userEmail } = await request.json();
 
   const { error } = await resend.emails.send({
-    from: 'NotiStock <alertas@tudominio.com>',
+    from: 'NotiStock <onboarding@resend.dev>',
     to: userEmail,
     subject: `⚠️ Stock crítico: ${productName}`,
     html: `
