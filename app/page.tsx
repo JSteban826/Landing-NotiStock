@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { supabase } from '@/lib/supabase';
 
 function EmailForm({ id, buttonText }: { id: string; buttonText: string }) {
   const [email, setEmail] = useState('');
@@ -58,6 +59,15 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    if (data.session) {
+      window.location.href = '/dashboard';
+    }
+  });
+}, []);
+
+
   function scrollToForm() {
     document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
   }
@@ -65,10 +75,17 @@ export default function Home() {
   return (
     <>
       {/* NAV */}
-     <nav className="landing-nav">
-        <div className="logo">Noti<span>Stock</span></div>
-        <button className="nav-cta" onClick={scrollToForm}>Quiero acceso</button>
-      </nav>
+      <nav className="landing-nav">
+  <div className="logo">Noti<span>Stock</span></div>
+  <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+    <a href="/login" className="nav-cta" style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text)' }}>
+      Iniciar sesión
+    </a>
+    <a href="/signup" className="nav-cta">
+      Crear cuenta
+    </a>
+  </div>
+</nav>
 
       {/* HERO */}
       <section className="hero">
