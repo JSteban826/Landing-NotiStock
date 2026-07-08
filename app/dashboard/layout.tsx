@@ -46,6 +46,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const links = [
   { href: '/dashboard', label: 'Dashboard', icon: '📊' },
   { href: '/dashboard/products', label: 'Inventario', icon: '📦' },
+  { href: '/dashboard/movements', label: 'Movimientos', icon: '🔄' },
   { href: '/dashboard/suppliers', label: 'Proveedores', icon: '🏭' },
   { href: '/dashboard/warehouses', label: 'Almacenes', icon: '📍' },
 ];
